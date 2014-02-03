@@ -10,7 +10,7 @@ RUN echo 'deb-src http://us.archive.ubuntu.com/ubuntu/ precise main universe' >>
 RUN apt-get update
 RUN apt-get -y upgrade
 
-RUN apt-get install -y -f openssh-server git-core unzip ant
+RUN apt-get install -y openssh-server git-core unzip ant
 RUN mkdir /var/run/sshd
 RUN echo "root:root" | chpasswd
 
