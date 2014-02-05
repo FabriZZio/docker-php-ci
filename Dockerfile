@@ -37,6 +37,7 @@ RUN pecl install xdebug
 ADD php/custom.ini /etc/php5/cli/conf.d/40-custom.ini
 
 RUN pecl install mongo
+ADD php/mongo.ini /etc/php5/cli/conf.d/50-mongo.ini
 
 RUN apt-get clean -y
 
