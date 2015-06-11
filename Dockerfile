@@ -5,6 +5,8 @@ RUN apt-get install -y ant
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
+ENV PATH=~/.composer/vendor/bin:$PATH
+
 # PHP QA tools
 RUN pear config-set auto_discover 1
 RUN pear channel-discover pear.pdepend.org
