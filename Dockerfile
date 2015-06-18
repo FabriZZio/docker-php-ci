@@ -1,6 +1,8 @@
 FROM fabrizzio/docker-php:latest
 MAINTAINER Dieter Provoost <dieter.provoost@marlon.be>
 
+RUN apt-get update -y
+
 RUN apt-get install -y -f --force-yes ant
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
