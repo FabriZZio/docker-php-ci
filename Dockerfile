@@ -5,7 +5,7 @@ RUN apt-get install -y ant
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
-ENV PATH="/root/.composer/vendor/bin:$PATH"
+ENV PATH /root/.composer/vendor/bin:$PATH
 
 # PHP QA tools
 RUN pear config-set auto_discover 1
