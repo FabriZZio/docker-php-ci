@@ -20,6 +20,9 @@ RUN pear install --alldeps phpmd/PHP_PMD
 RUN composer global require "sebastian/phpcpd=*"
 RUN wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && mv phpdox.phar /usr/local/bin/phpdox
 
+# Sqlite
+RUN apt-get install -y -f sqlite3
+
 RUN apt-get clean -y
 
 EXPOSE 22
