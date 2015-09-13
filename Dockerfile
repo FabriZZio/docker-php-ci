@@ -1,4 +1,4 @@
-FROM fabrizzio/docker-php:5.5.29
+FROM fabrizzio/docker-php:5.6.13
 MAINTAINER Dieter Provoost <dieter.provoost@marlon.be>
 
 # PHP QA tools
