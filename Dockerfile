@@ -1,18 +1,26 @@
-FROM fabrizzio/docker-php:7.0
+FROM php:7.0-cli
 MAINTAINER Dieter Provoost <dieter.provoost@marlon.be>
 
-# PHP QA tools
-RUN apt-get install -y -f --force-yes ant sqlite3 git-core && \
-    curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
-#    pear config-set auto_discover 1 && \
-#    pear channel-discover pear.pdepend.org && \
-#    pear channel-discover pear.phpmd.org && \
-#    composer global require 'phploc/phploc=*' && \
-#    pear install PHP_CodeSniffer && \
-#    pear install pdepend/PHP_Depend && \
-#    pear install --alldeps phpmd/PHP_PMD && \
-#    composer global require "sebastian/phpcpd=*" && \
-#    composer global require "theseer/phpdox=*" && \
-    apt-get clean -y
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    ant \
+    sqlite3 \
+    curl \
+    zlib1g-dev \
+    libicu-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev
 
-ENV PATH /root/.composer/vendor/bin:$PATH
+# Set timezone
+RUN rm /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Europe/Brussels /etc/localtime
+RUN "date"
+
+# Type docker-php-ext-install to see available extensions
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install pdo pdo_mysql zip bcmath intl gd
+
+# PHP Developer configuration
+ADD developer.ini /usr/local/etc/php/conf.d/developer.ini
