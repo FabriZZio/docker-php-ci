@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
-    libfreetype6-dev
+    libfreetype6-dev \
+    libxml2-dev
 
 # Set timezone
 RUN rm /etc/localtime
