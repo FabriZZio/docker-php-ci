@@ -21,7 +21,7 @@ RUN "date"
 
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
-    docker-php-ext-install pdo pdo_mysql zip bcmath intl gd pcntl soap
+    docker-php-ext-install pdo pdo_mysql zip bcmath intl gd pcntl soap xml
 
 # PHP Developer configuration
 ADD developer.ini /usr/local/etc/php/conf.d/developer.ini
